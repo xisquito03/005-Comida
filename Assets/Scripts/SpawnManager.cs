@@ -13,16 +13,17 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        // Llama periodicamente a la funcion SpawnRandomAnimal
         InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
     }
     
-    
+    // Funcion que hace aparecer un animal en una posicion aleatoria
     private void SpawnRandomAnimal()
     {
     animalIndex = Random.Range(0, animalprefabs.Length);
         Instantiate(animalprefabs[animalIndex], RandomSpawnPos(), animalprefabs[animalIndex].transform.rotation);
     }
-
+    // Funcion que genera un vector aleatorio.
     private Vector3 RandomSpawnPos()
     {
         float randomX = Random.Range(-spawnRangeX, spawnRangeX);
